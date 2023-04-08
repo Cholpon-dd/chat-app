@@ -14,7 +14,7 @@ const {
 const PORT = 5000;
 const io = require('socket.io')(http, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: 'chat-app-two-olive.vercel.app',
   },
 });
 
