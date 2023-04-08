@@ -15,7 +15,7 @@ const PORT = 5000;
 app.use(cors({ origin: '*' }));
 const io = require('socket.io')(http, {
   cors: {
-    origin: 'https://chat-app-two-olive.vercel.app/',
+    origin: '*',
     methods: ['GET', 'POST'],
   },
 });
