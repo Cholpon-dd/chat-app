@@ -10,9 +10,8 @@ const {
   getUserInRoom,
   getRooms,
 } = require('./users');
-require('dotenv').config();
 
-const PORT = process.env.PORT;
+const PORT = 5000;
 const io = require('socket.io')(http, {
   cors: {
     origin: 'http://localhost:5173',
