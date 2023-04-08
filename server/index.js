@@ -16,6 +16,7 @@ app.use(cors({ origin: '*' }));
 const io = require('socket.io')(http, {
   cors: {
     origin: 'https://chat-app-two-olive.vercel.app/',
+    methods: ['GET', 'POST'],
   },
 });
 
@@ -66,6 +67,11 @@ io.on('connection', (socket) => {
 });
 
 app.get('/api/users', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   const users = getUserInRoom();
   const rooms = getRooms();
   res.json({ users, rooms });
