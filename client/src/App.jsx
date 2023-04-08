@@ -4,7 +4,7 @@ import Home from './components/home/Home';
 import Chat from './components/chat/Chat';
 import io from 'socket.io-client';
 
-const serverUrl = 'https://chat-app-server-alpha.vercel.app/api/users';
+const serverUrl = 'https://chat-app-server-alpha.vercel.app/';
 const socket = io.connect(serverUrl);
 
 function App() {

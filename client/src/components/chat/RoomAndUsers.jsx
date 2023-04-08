@@ -10,7 +10,7 @@ const RoomAndUsers = ({ socket }) => {
   const [left, setLeft] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/users')
+    fetch('https://chat-app-server-alpha.vercel.app/api/users')
       .then((response) => response.json())
       .then((data) => {
         const { users, rooms } = data;
