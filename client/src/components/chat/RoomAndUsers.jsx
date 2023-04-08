@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ImUsers } from 'react-icons/im';
 import { HiChatBubbleLeftRight } from 'react-icons/hi2';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RoomAndUsers = ({ socket }) => {
   const [users, setUsers] = useState([]);
   const [rooms, setRooms] = useState([]);
   const [left, setLeft] = useState('');
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // fetch('https://chat-app-server-alpha.vercel.app/api/users')
-    fetch('http://localhost:5000/api/users')
+    fetch(import.meta.env.VITE_USERS_URL)
       .then((response) => response.json())
       .then((data) => {
         const { users, rooms } = data;
@@ -31,6 +32,7 @@ const RoomAndUsers = ({ socket }) => {
 
   const handleLeave = () => {
     socket.emit('leave');
+    navigate('/');
   };
   return (
     <SideBar>

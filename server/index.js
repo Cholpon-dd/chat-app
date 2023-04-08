@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
     if (user) {
       removeUser(user.id);
       socket.leave(user.room);
-      socket.emit('info', messageFormat(admin, `You have left the chat`));
+
       io.to(user.room).emit('info', messageFormat(admin, `${user.userName} has left the chat`));
       io.to(user.room).emit('users', { users: getUserInRoom(user.room), rooms: getRooms() });
     }

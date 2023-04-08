@@ -18,7 +18,7 @@ const Chat = ({ socket, info }) => {
     }
     setSendMsg('');
   };
-  const onEmojiClick = ({ emoji }) => setSendMsg(`${sendMsg} ${emoji}`);
+  const onEmojiClick = ({ emoji }) => setSendMsg(`${emoji}`);
 
   useEffect(() => {
     socket.on('info', (data) => {
@@ -59,10 +59,11 @@ const Chat = ({ socket, info }) => {
                   value={sendMsg}
                   onChange={(e) => setSendMsg(e.target.value)}
                 />
-                <div>
+                <SendButton>
                   <EmojiButton onClick={() => setOpen(!isOpen)}>😊</EmojiButton>
                   {isOpen && <EmojiPicker onEmojiClick={onEmojiClick} />}
-                </div>
+                </SendButton>
+
                 <SendButton type="submit">
                   <AiOutlineSend size={25} style={{ cursor: 'pointer', color: '#2d2d64' }} />
                 </SendButton>
